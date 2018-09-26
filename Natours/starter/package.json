@@ -1,0 +1,16 @@
+{
+  "name": "starter",
+  "version": "1.0.0",
+  "description": "npm practice",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "node-sass sass/index.scss css/style.css -w"
+  },
+  "author": "KG",
+  "license": "ISC",
+  "dependencies": {
+    "node-sass": "^4.9.3"
+  }
+}
+
+
