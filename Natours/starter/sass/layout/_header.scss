@@ -1,0 +1,42 @@
+.header {
+  position: relative;
+  height: 95vh;
+  background-image: linear-gradient(
+    to left top,
+     rgba($color-primary-light, .8),
+     rgba($color-primary-dark, .8)), 
+  url(../img/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  /**剪裁*/
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+}
+
+.logo-box {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}
+
+.logo {
+  height: 35px;
+}
+  
+.heading-secondary {
+  font-size: 3.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .2rem;
+  display: inline-block;
+  background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+  /**以下两行代码，显示文字下的背景图*/
+  -webkit-background-clip: text;
+  color: transparent;
+  
+  transition: all .2s;
+
+    &:hover {
+      transform: skewY(2deg) skewX(5deg) scale(1.1);
+      text-shadow: .5rem 1rem 2rem rgba($color-black, .2);
+    }
+}
