@@ -1,4 +1,4 @@
-/**父级清浮动*/
+/**父级清浮动，用于清浮动，定位无效果*/
 @mixin floatfix {
   &::after {
     content: "";

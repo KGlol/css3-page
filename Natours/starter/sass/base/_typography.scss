@@ -42,7 +42,7 @@
 
 .paragraph {
   font-size: $default-font-size;
-  &:not(:last-chlid) {
-  }
+  // &:not(:last-chlid) {
+  // }
   margin-bottom: 3rem;
 }

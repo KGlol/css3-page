@@ -1,0 +1,146 @@
+/**翻转卡片的效果*/
+
+.card {
+  /**perspective加在父级上，*/
+  perspective: 150rem;
+  /**兼容firefox*/
+  -moz-perspective: 150rem;
+
+  position: relative;
+  /**子元素绝对定位使得其height collapsed（坍方）*/
+  height: 51rem;
+
+  /**卡片两面的共有属性*/
+  &-side {
+    // background-color: orangered;
+    height: 51rem;
+    transition: all .8s ease-out;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+    /**使两面重叠*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    /**使定位后的元素恢复原来的宽度*/
+    width: 100%;
+    /**使背面的元素在不翻转时不可见*/
+    backface-visibility: hidden;
+    /**使背景图片在页面放大缩小时正常显示*/
+    overflow: hidden;
+    // &::after {
+    //   content: "";
+    //   display: table;
+    //   clear: both;
+    // }
+    
+    /**卡片正面的属性*/
+    &-front {
+      background-color: $color-white;
+    }
+
+    /**卡片反面的属性
+    **反面默认已被翻转180deg
+    */
+    &-back {
+      transform: rotateY(180deg);
+      /**三个card背面的渐变色*/
+        &-color-1 {
+          background-image: linear-gradient(
+            to right bottom, rgba($color-secondary-light, 1), rgba($color-secondary-dark, 1)) ;
+        }
+        &-color-2 {
+          background-image: linear-gradient(
+            to right bottom, rgba($color-primary-light, 1), rgba($color-primary-dark, 1)) ;
+        }
+        &-color-3 {
+          background-image: linear-gradient(
+            to right bottom, rgba($color-tertiary-light, 1), rgba($color-tertiary-dark, 1)) ;
+        }
+    }
+    
+  }
+
+  /**卡片hover时的翻转*/
+  &:hover &-side-front {
+    /**主要bug，两面翻转的方向应该相同，所以使用180deg*/
+    transform: rotateY(-180deg);
+  }
+  
+  &:hover &-side-back {
+    transform: rotateY(0deg);
+  }
+
+  &-picture {
+    background-size: cover;
+    height: 25rem;
+    background-blend-mode: screen;
+    /**兼容safari，且兼容属性应在原属性之前*/
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    
+    &-1 {
+      background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark),
+      /**在css文件中找到img便是此路径*/
+       url(../img/nat-5.jpg);
+    }
+    &-2 {
+      background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark),
+       url(../img/nat-6.jpg);
+    }
+    &-3 {
+      background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark),
+       url(../img/nat-7.jpg);
+    }
+  }
+
+  &-heading {
+    color: $color-white;
+    font-size: 3rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    position: absolute;
+    top: 12rem;
+    right: 2rem;
+    /**使p标签中的span居右且分成两行*/
+    text-align: right;
+    width: 65%;
+
+   
+
+    &-span {
+      padding: 1rem 2rem;
+      /**兼容下的safari和chrome，使多行行内元素的断处也有设定的样式*/
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+    
+    &-1 {
+      background-image: linear-gradient(to right bottom, rgba($color-secondary-light, .85), rgba($color-secondary-dark, .85));
+    }
+    &-2 {
+      background-image: linear-gradient(to right bottom, rgba($color-primary-light, .85), rgba($color-primary-dark, .85));
+    }
+    &-3 {
+      background-image: linear-gradient(to right bottom, rgba($color-tertiary-light, .85), rgba($color-tertiary-dark, .85));
+    }
+    }
+  }
+
+  &-details {
+    text-align: center;
+    padding: 2rem;
+    ul { 
+      list-style: none;
+      width: 80%;
+      margin: 0 auto;
+      
+      li {
+        font-size: 1.7rem;
+        padding: 1rem;
+        /**用在要指定的子元素选择器上，但指定除去其父元素的最后一个子元素*/
+        &:not(:last-child) {
+        border-bottom: 1px solid $color-grey-light-2;
+      }
+      }
+    }
+  }
+
+}
