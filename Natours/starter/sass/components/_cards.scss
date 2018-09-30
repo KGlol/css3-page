@@ -55,8 +55,9 @@
           background-image: linear-gradient(
             to right bottom, rgba($color-tertiary-light, 1), rgba($color-tertiary-dark, 1)) ;
         }
+
+       
     }
-    
   }
 
   /**卡片hover时的翻转*/
@@ -68,7 +69,7 @@
   &:hover &-side-back {
     transform: rotateY(0deg);
   }
-
+  /**背景图片1.2.3*/
   &-picture {
     background-size: cover;
     height: 25rem;
@@ -91,7 +92,7 @@
        url(../img/nat-7.jpg);
     }
   }
-
+  /**card中的标题文字*/
   &-heading {
     color: $color-white;
     font-size: 3rem;
@@ -105,7 +106,7 @@
     width: 65%;
 
    
-
+    /**标题中的文字*/
     &-span {
       padding: 1rem 2rem;
       /**兼容下的safari和chrome，使多行行内元素的断处也有设定的样式*/
@@ -123,7 +124,7 @@
     }
     }
   }
-
+  /**正面的列表*/
   &-details {
     text-align: center;
     padding: 2rem;
@@ -142,5 +143,32 @@
       }
     }
   }
+  /**card背面内容*/
+  &-cta {
+    /**使其居中*/
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
 
+  /**文字部分*/
+  &-price-box {
+    color: $color-white;
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+  &-price-only {
+    font-size: 2rem;
+    text-transform: uppercase;
+
+  }
+  &-price-value {
+    font-size: 6rem;
+    font-weight: 100;
+  }
+
+
+  
 }
