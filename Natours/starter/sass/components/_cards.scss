@@ -10,6 +10,7 @@
   /**子元素绝对定位使得其height collapsed（坍方）*/
   height: 51rem;
 
+
   /**卡片两面的共有属性*/
   &-side {
     // background-color: orangered;
@@ -76,7 +77,10 @@
     background-blend-mode: screen;
     /**兼容safari，且兼容属性应在原属性之前*/
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+
+    /**clip-path会破坏父级的overflow属性*/
     clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    border-radius: 3px;
     
     &-1 {
       background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark),
