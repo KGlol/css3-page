@@ -123,7 +123,10 @@ body {
 .section-tours {
   background-color: #f7f7f7;
   padding: 25rem 0 15rem 0;
-  margin: -20vh 0; }
+  margin-top: -20vh; }
+
+.section-stories {
+  padding: 10rem 0; }
 
 /**父级清浮动，用于清浮动，定位无效果*/
 /* *以下为头部按钮样式 */
@@ -435,6 +438,27 @@ body {
   .heading-secondary:hover {
     transform: skewY(-2deg) skewX(-5deg) scale(1.1);
     text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
+
+.heading-secondary-selfmade {
+  font-size: 3.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0 auto;
+  transition: all .2s;
+  /**以下五行代码为设置渐变色文字*/
+  display: inline-block;
+  background-clip: text;
+  /**兼容chrome*/
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, #7ed56f, #28b485); }
+  .heading-secondary-selfmade:hover {
+    text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2);
+    transform: scale(1.1) skew(-5deg, -2deg); }
+
+.btn-12 {
+  padding: 10rem;
+  margin: 5rem; }
 
 /**以下为grid layout的样式*/
 .row {
