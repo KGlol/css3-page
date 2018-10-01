@@ -82,6 +82,36 @@
   }
 }
 
+/**自己写的btn-text*/
+.btn-text-selfmade {
+  &:link,
+  &:visited {
+    color: $color-primary;
+    /**不起作用*/
+    // text-align: center;
+    font-size: $default-font-size;
+    text-decoration: none;
+    text-transform: capitalize;
+    padding: 5px;
+    /**行内和块都行*/
+    // display: inline-block;
+    margin: 0 auto;
+    border-bottom: 1px solid $color-primary;
+    transition: all .2s;
+  }
+  
+  &:hover {
+    color: $color-white;
+    background-color: $color-primary;
+    box-shadow: 0 1rem 2rem rgba($color-black, .2);
+    transform: translateY(-2px);
+  }
+  &:active {
+    box-shadow: 0 .8rem 1rem rgba($color-black, .2);
+    transform: translateY(-1px);
+  }
+}
+
   /**自己写的button样式*/
  
   .selfmade-btn {
