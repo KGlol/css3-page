@@ -129,6 +129,21 @@ body {
   padding: 15rem 0;
   position: relative; }
 
+.section-book {
+  padding: 15rem;
+  background-image: linear-gradient(to right bottom, #7ed56f, #28b485); }
+
+/**section-book中的book*/
+.book {
+  height: 50rem;
+  /**更美观*/
+  border-radius: 3px;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.2);
+  /**角度设置为105deg可以显示效果*/
+  background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.8) 50%, transparent 50%), url(../img/nat-10.jpg); }
+  .book-form {
+    padding: 6rem; }
+
 /**父级清浮动，用于清浮动，定位无效果*/
 /* *以下为头部按钮样式 */
 .btn:link,
@@ -513,6 +528,55 @@ body {
     /**使用object-fit实现背景视屏覆盖*/
     object-fit: cover; }
 
+.form {
+  width: 50%;
+  /**注意代码块的位置，严格对应元素位置*/
+  /**以下为单选按钮样式*/ }
+  .form-group:not(:last-child) {
+    margin-bottom: 2rem; }
+  .form-input {
+    font-family: inherit;
+    color: inherit;
+    font-size: 1.5rem;
+    padding: 1.5rem 2rem;
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+    display: block;
+    width: 85%;
+    /**focus时不会跳出边框*/
+    border-bottom: 3px solid transparent;
+    transition: all .3s;
+    /**也可以加在伪类里*/ }
+    .form-input:focus {
+      outline: none;
+      box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+      border-bottom: 3px solid #55c57a;
+      /**使用invalid伪类*/ }
+      .form-input:focus:invalid {
+        border-bottom: 3px solid #ff7730; }
+      .form-input:focus::-webkit-input-placeholder {
+        color: #999; }
+  .form-label {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-left: 2rem;
+    margin-top: .7rem;
+    /**box-model的属性可以实现*/
+    display: block;
+    transition: all .2s; }
+  .form-input:placeholder-shown + .form-label {
+    opacity: 0;
+    /**使元素不再页面上显示，没有这个元素*/
+    visibility: hidden;
+    transform: translateY(-4rem); }
+  .form-radio-group {
+    width: 50%;
+    display: inline-block; }
+  .form-radio-label {
+    cursor: pointer;
+    font-size: 1.6rem; }
+
 .header {
   position: relative;
   height: 95vh;
@@ -539,15 +603,18 @@ body {
   background-image: linear-gradient(to right, #7ed56f, #28b485);
   /**以下两行代码，显示文字下的背景图*/
   -webkit-background-clip: text;
+  background-clip: text;
   color: transparent;
   transition: all .2s; }
   .heading-secondary:hover {
     transform: skewY(-2deg) skewX(-5deg) scale(1.1);
     text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
 
+/**自己写的H2样式*/
 .heading-secondary-selfmade {
   font-size: 3.5rem;
   font-weight: 700;
+  letter-spacing: .2rem;
   text-transform: uppercase;
   margin: 0 auto;
   transition: all .2s;

@@ -35,3 +35,23 @@ margin: -20vh 0;
   // background-color: rgba($color-grey-light-1, .8);
   position: relative;
 }
+
+.section-book {
+  padding: 15rem;
+  background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+}
+
+/**section-book中的book*/
+.book {
+  height: 50rem;
+  /**更美观*/
+  border-radius: 3px;
+  box-shadow: 0 1rem 3rem rgba($color: $color-black, $alpha: .2);
+  /**角度设置为105deg可以显示效果*/
+  background-image: linear-gradient(105deg, rgba($color-white, .8) 50%, transparent 50%),
+                    url(../img/nat-10.jpg);
+
+  &-form {
+    padding: 6rem;
+  }
+}

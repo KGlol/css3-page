@@ -1,0 +1,77 @@
+.form {
+  width: 50%;
+
+  &-group {
+    &:not(:last-child) {
+      margin-bottom:2rem;
+    } 
+  }
+
+  &-input {
+    font-family: inherit;
+    color: inherit;
+    font-size: 1.5rem;
+    padding: 1.5rem 2rem;
+    border-radius: 2px;
+    background-color: rgba($color-white, .5);
+    border: none;
+    display: block;
+    width: 85%;
+    /**focus时不会跳出边框*/
+    border-bottom: 3px solid transparent;
+    transition: all .3s;
+
+    /**也可以加在伪类里*/
+    // outline: none;
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 1rem 2rem rgba($color: $color-black, $alpha: .15);
+      border-bottom: 3px solid $color-primary;
+      /**使用invalid伪类*/
+      &:invalid {
+        border-bottom: 3px solid $color-secondary-dark;
+      }
+
+      &::-webkit-input-placeholder {
+        color: $color-grey-dark-2;
+      }
+    }
+
+   
+  }
+
+  &-label {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-left: 2rem;
+    margin-top: .7rem;
+    /**box-model的属性可以实现*/
+    display: block;
+    transition: all .2s;
+  }
+  /**注意代码块的位置，严格对应元素位置*/
+  &-input:placeholder-shown + &-label {
+      opacity: 0;
+      /**使元素不再页面上显示，没有这个元素*/
+      visibility: hidden;
+      transform: translateY(-4rem);
+    }
+
+  /**以下为单选按钮样式*/
+  &-radio {
+
+    &-group {
+      width: 50%;
+      display: inline-block;
+    }
+    &-btn {
+
+    }
+    &-label {
+      cursor: pointer;
+      font-size: $default-font-size;
+
+    }
+  }
+}

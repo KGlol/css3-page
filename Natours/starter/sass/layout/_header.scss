@@ -31,6 +31,7 @@
   background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
   /**以下两行代码，显示文字下的背景图*/
   -webkit-background-clip: text;
+  background-clip: text;
   color: transparent;
   
   transition: all .2s;
@@ -40,10 +41,11 @@
       text-shadow: .5rem 1rem 2rem rgba($color-black, .2);
     }
 }
-
+/**自己写的H2样式*/
 .heading-secondary-selfmade {
   font-size: 3.5rem;
   font-weight: 700;
+  letter-spacing: .2rem;
   text-transform: uppercase;
   margin: 0 auto;
   transition: all .2s;
