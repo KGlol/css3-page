@@ -1,0 +1,167 @@
+.nav {
+  transition: all .3s;
+  &-checkbox {
+    /**使用复选框的原因是，可以重复选取取消*/
+    display: none;
+  }
+
+  &-button {
+    display: inline-block;
+    background-color: $color-white;
+    width: 7rem;
+    height: 7rem;
+    border-radius: 50%;
+    box-shadow: 0 1rem 2rem rgba($color-black, .15);
+    position: fixed;
+    top: 5.5rem;
+    right: 5.5rem;
+    z-index: 2000;
+    text-align: center;
+    cursor: pointer;
+    // backface-visibility: hidden;
+    transition: all .3s;
+
+    
+
+  }
+ 
+  &-background {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    /**radial-gradient由中心向四周发散*/
+    background-image: radial-gradient($color-primary-light, $color-primary-dark);
+    position: fixed;
+    top: 6rem;
+    right: 6rem;
+    z-index: 1000;
+    transition: all .8s;
+
+
+    // transform: scale(100);
+  }
+
+  &-navi {
+    /**因为后面要有移入的动画效果*/
+    width: 0;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    backface-visibility: hidden;
+    opacity: 0;
+    /**使用cubic-bezier自定义动画过度函数*/
+    transition: all .8s cubic-bezier(0,1.8,.99,.8);
+
+    // display: none;
+  }
+
+  &-list {
+    list-style: none;
+    text-align: center;
+    @include element-position-center;
+
+  }
+
+  &-item {
+    margin: 1rem;
+  }
+
+  &-link {
+    &:link,
+    &:visited {
+      font-size: 3rem;
+      font-weight: 100;
+      color: $color-white;
+      text-decoration: none;
+      text-transform: uppercase;
+      padding: .5rem 2rem;
+      border-radius: 3px;
+      background-image: linear-gradient(105deg, transparent 0, transparent 60%, $color-white 40%);
+      background-size: 300%;
+      transition: all .5s;
+      /**使盒模型的属性可以实现，不能是行内元素*/
+      display: inline-block;
+      backface-visibility: hidden;
+
+      &:hover,
+      &:active {
+        color: $color-primary;
+        // box-shadow: 0 1rem 5rem rgba($color-black, .2);
+        background-position: 100%;
+        transform: translateX(1rem);
+        // background-image: linear-gradient(105deg, $color-white 50%, $color-white 50%);
+      }
+
+      &-span {
+        margin-right: 1.5rem;
+        display: inline-block;
+      }
+    }
+  
+  }
+
+  /**按钮被点击时导航和背景出现*/
+      &-checkbox:checked ~ &-background {
+        transform: scale(80);
+      }
+      &-checkbox:checked ~ &-navi {
+        // display: block;
+        width: 100%;
+        opacity: 1;
+        z-index: 1500;
+      }
+      &-checkbox:checked + &-button &-icon {
+        /**首先使中间的span元素本身消失*/
+        background-color: transparent;
+        /**接着旋转前后伪元素*/
+        &::before {
+          top: -1rem;
+          transform: translateY(1rem) rotate(45deg);
+        }
+        &::after {
+          top: 1rem;
+          transform: translateY(-1rem) rotate(135deg);
+        }
+        
+      }
+    /**导航按钮的三道线*/
+  &-icon {
+    &,
+    &::before,
+    &::after {
+      /**元素本身before，after形成三道线*/
+      display: inline-block;
+      width: 3rem;
+      height: 2px;
+      background-color: $color-grey-dark-3;
+      margin-top: 3.5rem;
+    }
+    
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 2rem;
+      transition: all .2s;
+      // margin-bottom: .5rem;
+    }
+    &::before {
+      top: -.8rem;
+    }
+    &::after {
+      top: .8rem;
+    }
+  }
+
+  /**按钮hover时的样式变化*/
+  &-button:hover &-icon {
+    &::before {
+      top: -1rem;
+    }
+    &::after {
+      top: 1rem;
+    }
+  }
+}

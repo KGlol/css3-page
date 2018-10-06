@@ -115,7 +115,8 @@
   /**自己写的button样式*/
  
   .selfmade-btn {
-    
+   
+    &, /**使得button样式同样适用于没有：link和：visited伪类的元素，比如form中的button*/
     &:link,
     &:visited {
       /**行内元素无法实现transform效果*/
@@ -128,6 +129,10 @@
       padding: 1rem 3rem;
       margin-top: 3rem;
       transition: all .2s;
+      /**修复黑白边框的bug
+      **原因未知
+      */
+      border: transparent;
 
     }
 
@@ -139,6 +144,7 @@
     &:active {
       box-shadow: 0 .8rem 1rem rgba($color-black, .25);
       transform: translateY(-1px);
+      outline: none;
     }
 
     &-green {
