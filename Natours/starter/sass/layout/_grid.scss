@@ -1,10 +1,21 @@
 /**以下为grid layout的样式*/
 .row {
   max-width: $grid-width;
+
+  @include respond(tab-port) {
+    max-width: 50rem;
+    padding: 0 3rem;
+  }
+
   margin: 0 auto;
+
   &:not(:last-child) {
     margin-bottom: $gutter-vertical;
-    } 
+
+    @include respond(tab-port) {
+      margin-bottom: $gutter-vertical-small;
+    }
+  } 
 /**子级浮动时，加在父级以清浮动*/
   @include floatfix;
 
@@ -15,6 +26,14 @@
     /**除去最后一个*/
     &:not(:last-child) {
       margin-right: $gutter-horizontal;
+
+      @include respond(tab-port) {
+        margin-right: 0;
+        margin-bottom: $gutter-vertical-small;
+      }
+    }
+    @include respond(tab-port) {
+      width: 100% !important;
     }
   }
 

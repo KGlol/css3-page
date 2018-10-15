@@ -1,4 +1,26 @@
 @charset "UTF-8";
+/*MEDIA QUERY MANAGER
+ *
+ *0 - 600px:    Phone
+ *600- 900px:   Tablet portrait
+ *900 - 1200px: Tablet landscape
+ *[1200 - 1800px] is where normal style apply
+ *1800+px: Big desktop
+ */
+/**
+ * $breakpoint arguement choices:
+ * - phone
+ * - tab-port
+ * - tab-land
+ * - big-desk
+ * 
+ * 1em = 16px
+ * media query 应使用em作为单位
+ * 
+ * 媒体查询的修改顺序 Base+typography>general layout +grid > page layout >components
+ */
+/**父级清浮动，用于清浮动，定位无效果*/
+/**绝对定位使元素居中*/
 *,
 *::after,
 *::before {
@@ -8,7 +30,23 @@
 
 html {
   /**用于定义1rem的大小*/
-  font-size: 62.5%; }
+  font-size: 62.5%;
+  /**
+ * 由于代码解析的先后顺序，
+ * 媒体查询的结果会有差异。
+ */ }
+  @media (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media (max-width: 37.5em) {
+    html {
+      font-size: 30%; } }
+  @media (min-width: 112.5em) {
+    html {
+      font-size: 75%; } }
 
 body {
   font-family: "Lato", sans-serif;
@@ -17,6 +55,9 @@ body {
   color: #777;
   padding: 3rem;
   box-sizing: border-box; }
+  @media (max-width: 56.25em) {
+    body {
+      padding: 0; } }
 
 /* 以下为头部动画代码 */
 @keyframes moveInLeft {
@@ -54,37 +95,62 @@ body {
 /**底部的margin*/
 .u-margin-bottom-big {
   margin-bottom: 8rem; }
+  @media (max-width: 56.25em) {
+    .u-margin-bottom-big {
+      margin-bottom: 5rem; } }
 
 .u-margin-bottom-small {
   margin-bottom: 1.5rem; }
+  @media (max-width: 56.25em) {
+    .u-margin-bottom-small {
+      margin-bottom: 1rem; } }
 
 .u-margin-bottom-medium {
   margin-bottom: 4rem; }
+  @media (max-width: 56.25em) {
+    .u-margin-bottom-medium {
+      margin-bottom: 2rem; } }
 
 .heading-primary {
   color: #fff;
   text-transform: uppercase;
   backface-visibility: hidden;
-  margin-bottom: 60px; }
+  margin-bottom: 6rem; }
 
 .heading-primary-main {
   display: block;
-  font-size: 60px;
+  font-size: 6rem;
   font-weight: 400;
-  letter-spacing: 35px;
+  letter-spacing: 3.5rem;
   animation-name: moveInLeft;
   animation-duration: 1.5s;
   animation-timing-function: ease-out;
   /* animation-iteration-count: 2; 
   **加在父级上没有效果
   */ }
+  @media (max-width: 56.25em) {
+    .heading-primary-main {
+      font-size: 6rem;
+      letter-spacing: 3rem; } }
+  @media (max-width: 37.5em) {
+    .heading-primary-main {
+      letter-spacing: 2rem;
+      font-size: 5rem; } }
 
 .heading-primary-sub {
   display: block;
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 700;
-  letter-spacing: 17.4px;
+  letter-spacing: 1.74rem;
   animation: moveInRight 1.5s ease-in-out; }
+  @media (max-width: 56.25em) {
+    .heading-primary-sub {
+      font-size: 2rem;
+      letter-spacing: 1.5rem; } }
+  @media (max-width: 37.5em) {
+    .heading-primary-sub {
+      font-size: 1rem;
+      letter-spacing: .9rem; } }
 
 .text-box {
   position: absolute;
@@ -107,6 +173,9 @@ body {
   background-color: #f7f7f7;
   padding: 25rem 0;
   margin: -20vh 0; }
+  @media (max-width: 56.25em) {
+    .section-about {
+      padding: 20rem 0; } }
 
 .section-features {
   padding: 20rem 0;
@@ -117,6 +186,9 @@ body {
   transform: skewY(-5deg);
   /**使用直接子级选择器，去除直接子级的倾斜，*/
   /**以下注释中是原方法*/ }
+  @media (max-width: 56.25em) {
+    .section-features {
+      padding: 10rem 0; } }
   .section-features > * {
     transform: skewY(5deg); }
 
@@ -124,14 +196,23 @@ body {
   background-color: #f7f7f7;
   padding: 25rem 0 15rem 0;
   margin-top: -20vh; }
+  @media (max-width: 56.25em) {
+    .section-tours {
+      padding: 20rem 0 8rem 0; } }
 
 .section-stories {
   padding: 15rem 0;
   position: relative; }
+  @media (max-width: 56.25em) {
+    .section-stories {
+      padding: 10rem 0; } }
 
 .section-book {
-  padding: 15rem;
+  padding: 15rem 0;
   background-image: linear-gradient(to right bottom, #7ed56f, #28b485); }
+  @media (max-width: 56.25em) {
+    .section-book {
+      padding: 10rem 0; } }
 
 /**section-book中的book*/
 .book {
@@ -139,11 +220,40 @@ body {
   /**更美观*/
   border-radius: 3px;
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.2);
+  background-size: 100%;
   /**角度设置为105deg可以显示效果*/
   background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.8) 50%, transparent 50%), url(../img/nat-10.jpg); }
+  @media (max-width: 75em) {
+    .book {
+      background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.8) 60%, transparent 40%), url(../img/nat-10.jpg);
+      background-size: cover; } }
+  @media (max-width: 56.25em) {
+    .book {
+      background-image: linear-gradient(to right, rgba(255, 255, 255, 0.8) 100%, transparent 0), url(../img/nat-10.jpg);
+      background-size: cover; } }
   .book-form {
     padding: 6rem; }
 
+/*MEDIA QUERY MANAGER
+ *
+ *0 - 600px:    Phone
+ *600- 900px:   Tablet portrait
+ *900 - 1200px: Tablet landscape
+ *[1200 - 1800px] is where normal style apply
+ *1800+px: Big desktop
+ */
+/**
+ * $breakpoint arguement choices:
+ * - phone
+ * - tab-port
+ * - tab-land
+ * - big-desk
+ * 
+ * 1em = 16px
+ * media query 应使用em作为单位
+ * 
+ * 媒体查询的修改顺序 Base+typography>general layout +grid > page layout >components
+ */
 /**父级清浮动，用于清浮动，定位无效果*/
 /**绝对定位使元素居中*/
 /* *以下为头部按钮样式 */
@@ -295,23 +405,49 @@ body {
     z-index: 10;
     transition: all .2s;
     outline-offset: 2rem; }
+    @media (max-width: 56.25em) {
+      .composition-photo {
+        float: left;
+        width: 33.33333%;
+        position: relative;
+        box-shadow: 0 1.5rem 2rem rgba(0, 0, 0, 0.2); } }
     .composition-photo-p1 {
       left: 0;
       top: -2rem; }
+      @media (max-width: 56.25em) {
+        .composition-photo-p1 {
+          top: 0;
+          transform: scale(1.3); } }
     .composition-photo-p2 {
       right: 0;
       top: 2rem; }
+      @media (max-width: 56.25em) {
+        .composition-photo-p2 {
+          top: -1rem;
+          transform: scale(1.3);
+          z-index: 15; } }
     .composition-photo-p3 {
       left: 20%;
       top: 10rem; }
+      @media (max-width: 56.25em) {
+        .composition-photo-p3 {
+          top: 0;
+          left: 0;
+          transform: scale(1.3); } }
     .composition-photo:hover {
       outline: 1.5rem solid #55c57a;
       /**伸缩且向上*/
       transform: scale(1.05) translateY(-0.5rem);
       box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.5);
       z-index: 20; }
+      @media (max-width: 56.25em) {
+        .composition-photo:hover {
+          transform: scale(1.4); } }
   .composition:hover .composition-photo:not(:hover) {
     transform: scale(0.95); }
+    @media (max-width: 56.25em) {
+      .composition:hover .composition-photo:not(:hover) {
+        transform: scale(1.3); } }
 
 .feature-box {
   background-color: rgba(255, 255, 255, 0.7);
@@ -323,6 +459,9 @@ body {
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
   transition: all .2s;
   /**恢复子级元素的倾斜*/ }
+  @media (max-width: 56.25em) {
+    .feature-box {
+      padding: 2rem; } }
   .feature-box:hover {
     transform: scale(1.02) translateY(-1.5rem); }
   .feature-box-icon {
@@ -330,8 +469,13 @@ body {
     margin-bottom: .5rem;
     display: inline-block;
     -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
     background-image: linear-gradient(to right, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)); }
+    @media (max-width: 56.25em) {
+      .feature-box-icon {
+        font-size: 5rem;
+        margin-bottom: .1rem; } }
 
 /**翻转卡片的效果*/
 .card {
@@ -470,6 +614,17 @@ body {
   /**修复子级被倾斜的方法，反方向倾斜*/ }
   .story > * {
     transform: skewX(12deg); }
+    @media (max-width: 37.5em) {
+      .story > * {
+        transform: skewX(0); } }
+  @media (max-width: 56.25em) {
+    .story {
+      width: 100%;
+      padding: 4rem;
+      padding-left: 6rem; } }
+  @media (max-width: 37.5em) {
+    .story {
+      transform: skewX(0); } }
   .story-figcaption {
     color: #fff;
     font-size: 1.7rem;
@@ -496,6 +651,15 @@ body {
     -webkit-clip-path: circle(50% at 50% 50%);
     clip-path: circle(50% at 50% 50%);
     transform: translate(-3rem) skewX(12deg); }
+    @media (max-width: 56.25em) {
+      .story-shape {
+        width: 13rem;
+        height: 13rem; } }
+    @media (max-width: 37.5em) {
+      .story-shape {
+        width: 10rem;
+        height: 10rem;
+        transform: translate(-3rem) skewX(0); } }
   .story-image {
     /**响应式的网页中图片应该总有一个百分比的宽度或高度
     **当只给图片一个宽度时，因为一般图片的宽度大于高度，所以现实为高度无法填满
@@ -538,8 +702,14 @@ body {
   width: 50%;
   /**注意代码块的位置，严格对应元素位置*/
   /**以下为单选按钮样式*/ }
+  @media (max-width: 56.25em) {
+    .form {
+      width: 100%; } }
   .form-group:not(:last-child) {
     margin-bottom: 2rem; }
+    @media (max-width: 56.25em) {
+      .form-group:not(:last-child) {
+        margin-bottom: 0; } }
   .form-input {
     /**input框的字体，颜色等不会自动继承，默认使用浏览器设置的属性值*/
     font-family: inherit;
@@ -555,6 +725,9 @@ body {
     border-bottom: 3px solid transparent;
     transition: all .3s;
     /**也可以加在伪类里*/ }
+    @media (max-width: 56.25em) {
+      .form-input {
+        width: 100%; } }
     .form-input:focus {
       outline: none;
       box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
@@ -571,10 +744,10 @@ body {
     margin-top: .7rem;
     /**box-model的属性可以实现*/
     display: block;
-    transition: all .2s; }
+    transition: all .3s; }
   .form-input:placeholder-shown + .form-label {
     opacity: 0;
-    /**使元素不再页面上显示，没有这个元素*/
+    /**使元素不在页面上显示，没有这个元素*/
     visibility: hidden;
     transform: translateY(-4rem); }
   .form-radio {
@@ -583,6 +756,10 @@ body {
     .form-radio-group {
       width: 49%;
       display: inline-block; }
+      @media (max-width: 56.25em) {
+        .form-radio-group {
+          width: 100%;
+          margin-bottom: 2rem; } }
     .form-radio-btn {
       display: inline-block;
       width: 2rem;
@@ -684,15 +861,21 @@ body {
     -ms-hyphens: auto;
     -webkit-hyphens: auto;
     hyphens: auto; }
+    @media (max-width: 56.25em) {
+      .popup-text {
+        margin-bottom: 0rem; } }
 
 .header {
   position: relative;
   height: 95vh;
-  background-image: linear-gradient(to left top, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-image: linear-gradient(to left top, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero-small.jpg);
   background-size: cover;
   background-position: top;
   /**剪裁*/
   clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%); }
+  @media (min-resolution: 192dpi) and (min-width: 600px), (min-width: 2000px), (-webkit-device-pixel-ratio: 2) {
+    .header {
+      background-image: linear-gradient(to left top, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg); } }
 
 .logo-box {
   position: absolute;
@@ -717,6 +900,12 @@ body {
   .heading-secondary:hover {
     transform: skewY(-2deg) skewX(-5deg) scale(1.1);
     text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
+  @media (max-width: 56.25em) {
+    .heading-secondary {
+      font-size: 3rem; } }
+  @media (max-width: 37.5em) {
+    .heading-secondary {
+      font-size: 2.5rem; } }
 
 /**自己写的H2样式*/
 .heading-secondary-selfmade {
@@ -746,8 +935,15 @@ body {
   margin: 0 auto;
   /**子级浮动时，加在父级以清浮动*/
   /**属性选择器，用来定义共有的属性*/ }
+  @media (max-width: 56.25em) {
+    .row {
+      max-width: 50rem;
+      padding: 0 3rem; } }
   .row:not(:last-child) {
     margin-bottom: 8rem; }
+    @media (max-width: 56.25em) {
+      .row:not(:last-child) {
+        margin-bottom: 5rem; } }
   .row::after {
     content: "";
     display: table;
@@ -757,6 +953,13 @@ body {
     /**除去最后一个*/ }
     .row [class^="col-"]:not(:last-child) {
       margin-right: 6rem; }
+      @media (max-width: 56.25em) {
+        .row [class^="col-"]:not(:last-child) {
+          margin-right: 0;
+          margin-bottom: 5rem; } }
+    @media (max-width: 56.25em) {
+      .row [class^="col-"] {
+        width: 100% !important; } }
   .row .col-1-of-2 {
     /**用以动态计算div的宽度*/
     width: calc( (100% - 6rem) / 2); }
@@ -775,23 +978,33 @@ body {
   background-color: #333;
   font-size: 1.4rem;
   padding: 10rem 0; }
+  @media (max-width: 56.25em) {
+    .footer {
+      padding: 6rem 0; } }
   .footer-logo {
     width: 15rem; }
     .footer-logo-box {
       /**text-align对img有效果*/
       text-align: center;
       margin-bottom: 8rem; }
+      @media (max-width: 56.25em) {
+        .footer-logo-box {
+          margin-bottom: 6rem; } }
   .footer-navigation {
     border-top: 1px solid #777;
     padding-top: 2rem;
     /**使的div的border，不占有100%宽度，只有内容宽的相应长度*/
     display: inline-block; }
+    @media (max-width: 56.25em) {
+      .footer-navigation {
+        width: 100%;
+        text-align: center; } }
   .footer-list {
     list-style: none; }
   .footer-item {
     display: inline-block; }
     .footer-item:not(:last-child) {
-      margin-right: 1.5rem; }
+      margin-right: 1rem; }
   .footer-link:link, .footer-link:visited {
     display: inline-block;
     color: #f7f7f7;
@@ -799,7 +1012,7 @@ body {
       **两个位置都可以
       */
     background-color: #333;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     text-decoration: none;
     text-transform: uppercase;
     display: inline-block;
@@ -815,6 +1028,11 @@ body {
     color: #f7f7f7;
     width: 80%;
     float: right; }
+    @media (max-width: 56.25em) {
+      .footer-copyright {
+        float: none;
+        width: 100%;
+        text-align: center; } }
 
 .nav {
   transition: all .3s;

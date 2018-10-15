@@ -1,9 +1,16 @@
 .form {
   width: 50%;
+  
+  @include respond(tab-port) {
+    width: 100%;
+  }
 
   &-group {
     &:not(:last-child) {
-      margin-bottom:2rem;
+      margin-bottom: 2rem;
+      @include respond(tab-port) {
+        margin-bottom: 0;
+      }
     } 
   }
 
@@ -21,7 +28,9 @@
     /**focus时不会跳出边框*/
     border-bottom: 3px solid transparent;
     transition: all .3s;
-
+    @include respond(tab-port){
+      width: 100%;
+    }
     /**也可以加在伪类里*/
     // outline: none;
 
@@ -49,12 +58,12 @@
     margin-top: .7rem;
     /**box-model的属性可以实现*/
     display: block;
-    transition: all .2s;
+    transition: all .3s;
   }
   /**注意代码块的位置，严格对应元素位置*/
   &-input:placeholder-shown + &-label {
       opacity: 0;
-      /**使元素不再页面上显示，没有这个元素*/
+      /**使元素不在页面上显示，没有这个元素*/
       visibility: hidden;
       transform: translateY(-4rem);
     }
@@ -65,6 +74,10 @@
     &-group {
       width: 49%;
       display: inline-block;
+      @include respond(tab-port) {
+        width: 100%;
+        margin-bottom: 2rem;
+      }
     }
     &-btn {
       display: inline-block;

@@ -3,26 +3,43 @@
   color: $color-white;
   text-transform: uppercase;
   backface-visibility: hidden;
-  margin-bottom: 60px;
+  margin-bottom: 6rem;
 }
 .heading-primary-main {
   display: block;
-  font-size: 60px;
+  font-size: 6rem;
   font-weight: 400;
-  letter-spacing: 35px;
+  letter-spacing: 3.5rem;
   animation-name: moveInLeft;
   animation-duration: 1.5s;
   animation-timing-function: ease-out;
   /* animation-iteration-count: 2; 
   **加在父级上没有效果
   */
+ @include respond(tab-port) {
+  font-size: 6rem;
+  letter-spacing: 3rem
+}
+ @include respond(phone) {
+   letter-spacing: 2rem;
+   font-size: 5rem;
+ }
 }
 .heading-primary-sub {
   display: block;
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 700;
-  letter-spacing: 17.4px;
+  letter-spacing: 1.74rem;
   animation: moveInRight 1.5s ease-in-out;
+
+  @include respond(tab-port) {
+    font-size: 2rem;
+    letter-spacing: 1.5rem;
+  }
+  @include respond(phone) {
+    font-size: 1rem;
+    letter-spacing: .9rem
+  }
 }
 
 .text-box {

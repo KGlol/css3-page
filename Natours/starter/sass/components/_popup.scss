@@ -57,6 +57,8 @@
       color: $color-primary-dark;
       }
     }
+
+  //popup页面上的左右两个div
   &-left {
     width: 33.333%;
     object-fit: cover;
@@ -83,6 +85,11 @@
   &-text {
     font-size: 1.4rem;
     margin-bottom: 4rem;
+
+    @include respond(tab-port) {
+      margin-bottom: 0rem;
+    }
+
     -moz-column-count: 2;
     -moz-column-gap: 4rem;
     -moz-column-rule: 1px dashed $color-grey-light-2;
