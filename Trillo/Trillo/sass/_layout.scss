@@ -1,0 +1,33 @@
+.container {
+  margin: 8rem auto;
+  max-width: 120rem;
+  background-color: var(--color-grey-light-1);
+  box-shadow: var(--shadow-dark);
+
+  min-height: 50rem;
+}
+
+.header {
+  font-size: 1.4rem;
+  height: 7rem;
+  border-bottom: var(--color-grey-light-2);
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; //默认为拉伸
+}
+
+.contain {
+  display: flex;
+}
+
+.sidebar {
+  background-color: var(--color-grey-dark-1);
+  flex: 0 0 18%;
+}
+
+.hotel-view {
+ background-color: salmon;
+ flex: 1;//占据剩余所有空间
+  // flex: 0 0 82%;目前看来两者效果相同
+}
