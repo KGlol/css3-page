@@ -63,8 +63,7 @@
 
 .user-nav {
   display: flex;
-  align-items: center;
-  background-color: greenyellow;
+  align-self: stretch;
   
   
   & > * {//可以选择元素的直接子集
@@ -80,32 +79,106 @@
     }
   }
 
-  &-icon-box {
-
-  }
 
   &-icon {
     width: 2.25rem;
     height: 2.25rem;
+    fill: var(--color-grey-dark-2);
+    margin-right: -1rem;
   }
 
   &-notification {
-
+    color: aliceblue;
+    margin-top: -2rem;
+    font-size: .5rem;
+    height: 1.75rem;
+    width: 1.75rem;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    display: flex;
+    justify-content: center;
+    align-content: center;
   }
 
   &-user {
-    display: flex;
+    // display: flex;
 
     &-photo {
       height: 3.75rem;
       border-radius: 50%;
-    }
-    &-name {
-
+      margin-right: 1rem
     }
 
   }
 
 
+
+}
+
+//sidebar styles
+.sidebar {
+  width: 20rem;
+}
+
+.side-nav {
+  font-size: 1.4rem;
+  margin-top: 3.5rem;
+  list-style: none;
+   
+  &-item {
+    position: relative;//不加时,会直接相对于最大的父级,此处为.side-nav
+    &:not(last-chlid) {
+      margin-bottom: .5rem;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: var(--color-primary);
+      height: 100%;
+      width: 3px;
+      transform: scaleY(0);
+      transition: transform .3s,
+                  width .4s  cubic-bezier(0,1.8,1,.2) .4s;
+      // visibility: hidden;
+    }
+    &:hover::before {
+      transform: scaleY(1);
+      width: 100%;
+    }
+  }
+
+  &-icon {
+    width: 1.5rem;;
+    height: 1.5rem;;
+    margin-right: 1.5rem;
+    fill: currentColor;
+  }
+
+  &-link {
+  
+    &:link,
+    &:visited {
+      text-decoration: none;
+      text-transform: uppercase;
+      color: var(--color-grey-light-1);
+      font-size: 1.5rem;
+      font-weight: 100;
+      padding: 1rem 3rem;//a标签默认只能加左右padding
+      position: relative;
+      display: block;
+      display: flex;
+      align-items: center;
+      z-index: 1;//z-index: ;应与位置结合,才有效果
+    }
+  }
+}
+
+.legal {
+  font-size: 1.2rem;
+  padding: 2.5rem;
+  text-align: center;
+  color: var(--color-grey-light-4);
 
 }
