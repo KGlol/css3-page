@@ -140,12 +140,16 @@
       width: 3px;
       transform: scaleY(0);
       transition: transform .3s,
-                  width .4s  cubic-bezier(0,1.8,1,.2) .4s;
+                  width .4s  cubic-bezier(0,1.8,1,.2) .4s,
+                  background-color .1s;
       // visibility: hidden;
     }
     &:hover::before {
       transform: scaleY(1);
       width: 100%;
+    }
+    &:active::before {
+      background-color: var(--color-primary-light);
     }
   }
 
