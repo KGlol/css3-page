@@ -2,7 +2,7 @@
  * @Author: KG 
  * @Date: 2018-10-27 17:14:33 
  * @Last Modified by: KG
- * @Last Modified time: 2018-10-27 17:15:33
+ * @Last Modified time: 2018-10-29 19:25:52
  */
 /*
 COLORS
@@ -71,7 +71,8 @@ body {
   background-color: #fff;
   display: flex;
   justify-content: space-between;
-  align-items: center; }
+  align-items: center;
+  border-bottom: 1px solid var(--color-grey-light-3); }
 
 .contain {
   display: flex; }
@@ -85,7 +86,6 @@ body {
 
 .hotel-view {
   height: 80rem;
-  background-color: salmon;
   flex: 1; }
 
 .logo {
@@ -208,3 +208,70 @@ body {
   padding: 2.5rem;
   text-align: center;
   color: var(--color-grey-light-4); }
+
+.gallery {
+  display: flex; }
+  .gallery-photo {
+    width: 100%;
+    display: block; }
+
+.overview {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--color-grey-light-3); }
+  .overview > * {
+    margin-left: 3rem; }
+  .overview-heading {
+    color: #000;
+    font-weight: 200;
+    text-transform: uppercase;
+    letter-spacing: 2px; }
+  .overview-stars {
+    margin-right: auto; }
+  .overview-star {
+    width: 1.75rem;
+    height: 1.75rem;
+    fill: var(--color-primary); }
+  .overview-rating {
+    display: flex;
+    align-items: center; }
+    .overview-rating-btn {
+      display: block;
+      border: none;
+      color: var(--color-primary);
+      border-bottom: 1px solid currentColor;
+      outline: none;
+      transition: all .2s;
+      background-color: transparent;
+      cursor: pointer; }
+      .overview-rating-btn:hover {
+        transform: scale(1.05) translateY(-1px);
+        box-shadow: 0 0.7rem 1rem rgba(0, 0, 0, 0.3); }
+      .overview-rating-btn:focus {
+        animation: pulsate 1s infinite; }
+
+@keyframes pulsate {
+  0% {
+    transform: scale(1.05) translateY(-1px);
+    box-shadow: 0 0.7rem 1rem rgba(0, 0, 0, 0.3); }
+  50% {
+    transform: scale(1) translateY(0);
+    box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.6); }
+  100% {
+    transform: scale(1.05) translateY(-1px);
+    box-shadow: 0 0.7rem 1rem rgba(0, 0, 0, 0.3); } }
+    .overview-rating-location {
+      width: 1.75rem;
+      height: 1.75rem;
+      margin-right: .5rem;
+      fill: var(--color-primary); }
+  .overview-votes {
+    color: white;
+    background-color: var(--color-primary-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 1rem;
+    font-weight: 100; }
+    .overview-votes-rating-average {
+      font-size: 2rem; }

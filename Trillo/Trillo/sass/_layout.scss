@@ -15,6 +15,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center; //默认为拉伸
+  border-bottom: 1px solid var(--color-grey-light-3)
 }
 
 .contain {
@@ -32,7 +33,6 @@
 
 .hotel-view {
   height: 80rem;;
- background-color: salmon;
- flex: 1;//占据剩余所有空间
+  flex: 1;//占据剩余所有空间
   // flex: 0 0 82%;目前看来两者效果相同
 }
