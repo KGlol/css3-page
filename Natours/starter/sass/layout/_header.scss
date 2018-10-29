@@ -5,7 +5,18 @@
     to left top,
      rgba($color-primary-light, .8),
      rgba($color-primary-dark, .8)), 
-  url(../img/hero.jpg);
+  url(../img/hero-small.jpg);
+
+  @media (min-resolution: 192dpi) and (min-width: 600px),
+           (min-width: 2000px),
+           (-webkit-device-pixel-ratio: 2) {
+    background-image: linear-gradient(
+      to left top,
+       rgba($color-primary-light, .8),
+       rgba($color-primary-dark, .8)), 
+    url(../img/hero.jpg);
+           }
+           
   background-size: cover;
   background-position: top;
   /**剪裁*/
@@ -31,12 +42,48 @@
   background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
   /**以下两行代码，显示文字下的背景图*/
   -webkit-background-clip: text;
+  background-clip: text;
   color: transparent;
   
   transition: all .2s;
 
-    &:hover {
-      transform: skewY(2deg) skewX(5deg) scale(1.1);
-      text-shadow: .5rem 1rem 2rem rgba($color-black, .2);
-    }
+  &:hover {
+    transform: skewY(-2deg) skewX(-5deg) scale(1.1);
+    text-shadow: .5rem 1rem 2rem rgba($color-black, .2);
+  }
+
+  @include respond(tab-port) {
+    font-size: 3rem;
+  }
+  @include respond(phone) {
+    font-size: 2.5rem;
+  }
+  
+}
+/**自己写的H2样式*/
+.heading-secondary-selfmade {
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: .2rem;
+  text-transform: uppercase;
+  // margin: 0 auto;
+  transition: all .2s;
+  /**以下五行代码为设置渐变色文字*/
+  display: inline-block;
+  background-clip: text;
+  /**兼容chrome*/
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+  &:hover {
+    text-shadow: .5rem 1rem 2rem rgba($color-black, .2);
+    transform: scale(1.1) skew(-5deg, -2deg);
+  }
+
+
+}
+
+.btn-12 {
+  padding: 10rem;
+  margin: 5rem;
 }

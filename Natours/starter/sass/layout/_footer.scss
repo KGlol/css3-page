@@ -1,0 +1,81 @@
+.footer {
+  background-color: $color-grey-dark-3;
+  font-size: 1.4rem;
+  padding: 10rem 0;
+  
+  @include respond(tab-port) {
+    padding: 6rem 0;
+  }
+  
+  &-logo {
+    width: 15rem;
+
+    &-box {
+      /**text-align对img有效果*/
+      text-align: center;
+      margin-bottom: 8rem;
+
+      @include respond(tab-port) {
+        margin-bottom: 6rem;
+      }
+    }
+  }
+
+  &-navigation {
+    border-top: 1px solid $color-grey-dark;
+    padding-top: 2rem;
+    /**使的div的border，不占有100%宽度，只有内容宽的相应长度*/
+    display: inline-block;
+    @include respond(tab-port) {
+      width: 100%;
+      text-align: center;
+    }
+  }
+  &-list {
+    list-style: none;
+  }
+  &-item {
+    display: inline-block;
+
+    &:not(:last-child) {
+      margin-right: 1rem;
+    }
+  }
+  &-link {
+    &:link,
+    &:visited {
+      display: inline-block;
+      color: $color-grey-light-1;
+      /**修复翻转后背景色为透明bug
+      **两个位置都可以
+      */
+      background-color: $color-grey-dark-3;
+      font-size: 1.2rem;
+      text-decoration: none;
+      text-transform: uppercase;
+      display: inline-block;
+      transition: all .2s;
+    }
+
+    &:hover,
+    &:active {
+      color: $color-primary;
+      /**修复翻转后背景色为透明bug*/
+      // background-color: $color-grey-dark-3;
+      box-shadow: 0 1rem 2rem rgba($color-black, .4);
+      transform: rotate(5deg) scale(1.1);
+    }
+  }
+  &-copyright {
+    border-top: 1px solid $color-grey-dark;
+    padding-top: 2rem;
+    color: $color-grey-light-1;
+    width: 80%;
+    float: right;
+    @include respond(tab-port) {
+      float: none;
+      width: 100%;
+      text-align: center;
+    }
+  }
+}

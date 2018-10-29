@@ -1,0 +1,21 @@
+.bg-video {
+  width: 100%;
+  height:100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: .6;
+  overflow: hidden;
+
+  &-content {
+    width: 100%;
+    height: 100%;
+    /**background-size没效果*/
+    // background-size: cover;
+    /**使用object-fit实现背景视屏覆盖*/
+    object-fit: cover;
+  }
+}

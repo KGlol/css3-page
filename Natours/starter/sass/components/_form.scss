@@ -1,0 +1,120 @@
+.form {
+  width: 50%;
+  
+  @include respond(tab-port) {
+    width: 100%;
+  }
+
+  &-group {
+    &:not(:last-child) {
+      margin-bottom: 2rem;
+      @include respond(tab-port) {
+        margin-bottom: 0;
+      }
+    } 
+  }
+
+  &-input {
+    /**input框的字体，颜色等不会自动继承，默认使用浏览器设置的属性值*/
+    font-family: inherit;
+    color: inherit;
+    font-size: 1.5rem;
+    padding: 1.5rem 2rem;
+    border-radius: 2px;
+    background-color: rgba($color-white, .5);
+    border: none;
+    display: block;
+    width: 85%;
+    /**focus时不会跳出边框*/
+    border-bottom: 3px solid transparent;
+    transition: all .3s;
+    @include respond(tab-port){
+      width: 100%;
+    }
+    /**也可以加在伪类里*/
+    // outline: none;
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 1rem 2rem rgba($color: $color-black, $alpha: .15);
+      border-bottom: 3px solid $color-primary;
+      /**使用invalid伪类*/
+      &:invalid {
+        border-bottom: 3px solid $color-secondary-dark;
+      }
+
+      &::-webkit-input-placeholder {
+        color: $color-grey-dark-2;
+      }
+    }
+
+   
+  }
+
+  &-label {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-left: 2rem;
+    margin-top: .7rem;
+    /**box-model的属性可以实现*/
+    display: block;
+    transition: all .3s;
+  }
+  /**注意代码块的位置，严格对应元素位置*/
+  &-input:placeholder-shown + &-label {
+      opacity: 0;
+      /**使元素不在页面上显示，没有这个元素*/
+      visibility: hidden;
+      transform: translateY(-4rem);
+    }
+
+  /**以下为单选按钮样式*/
+  &-radio {
+    display: none;
+    &-group {
+      width: 49%;
+      display: inline-block;
+      @include respond(tab-port) {
+        width: 100%;
+        margin-bottom: 2rem;
+      }
+    }
+    &-btn {
+      display: inline-block;
+      width: 2rem;
+      height: 2rem;
+      border: 5px solid $color-primary;
+      border-radius: 50%;
+      position: absolute;
+      top: -1px;
+      left: 0;
+
+      &::after {
+        content: "";
+        display: block;
+        width: 1rem;
+        height: 1rem;
+        border: 6px solid $color-primary;
+        // border: 
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+      }
+    }
+
+    /**form-radio checked的时候，注意逻辑*/
+    &:checked ~ &-label  &-btn::after {
+            opacity: 1;
+          }
+
+    &-label {
+      cursor: pointer;
+      font-size: $default-font-size;
+      position: relative;
+      padding-left: 2.5rem;
+    }
+  }
+}

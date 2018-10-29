@@ -1,0 +1,103 @@
+.story {
+  width: 75%;
+  padding: 6rem;
+  padding-left: 9rem;
+  background-color: rgba($color-white, .7);
+  border-radius: 3px;
+  box-shadow: 0 2rem 6rem rgba($color-black, .2);
+  margin: 0 auto;
+  font-size: $default-font-size;
+  font-weight: 400;
+  position: relative;
+  // transition: all .2s;
+  /**skewX时，X轴方向是平的
+  **skewY时，Y轴方向是平的
+  */
+  transform: skewX(-12deg);
+  /**修复子级被倾斜的方法，反方向倾斜*/
+  & > * {
+    transform: skewX(12deg);
+
+    @include respond(phone) {
+      transform: skewX(0);
+    }
+
+  }
+  @include respond(tab-port) {
+    width: 100%;
+    padding: 4rem;
+    padding-left: 6rem;
+  }
+  @include respond(phone) {
+    transform: skewX(0);
+  }
+  
+  &-figcaption  {
+    color: $color-white;
+    font-size: 1.7rem;
+    text-align: center;
+    text-transform: uppercase;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, 20%);
+    transform: translate(-50%, 20%);
+    opacity: 0;
+    transition: all .5s;
+    /**用于修复文字的动画1px的抖动*/
+    backface-visibility: hidden;
+  }
+  
+  &-shape {
+    width: 15rem;
+    height: 15rem;
+    /**浮动使得文字包围图形*/
+    float: left;
+    /**shape-outside规定元素的形状为圆形，浮动后文字会以其形状浮动，但该元素视觉上并不会显示为圆形*/
+    -webkit-shape-outside: circle(50% at 50% 50%);
+    shape-outside: circle(50% at 50% 50%);
+    /**clip-path使元素显示为圆形*/
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+    transform: translate(-3rem) skewX(12deg);
+
+    @include respond(tab-port) {
+      width: 13rem;
+      height: 13rem;
+    }
+    @include respond(phone) {
+      width: 10rem;
+      height: 10rem;
+      transform: translate(-3rem) skewX(0);
+    }
+
+  }
+
+  &-image {
+    /**响应式的网页中图片应该总有一个百分比的宽度或高度
+    **当只给图片一个宽度时，因为一般图片的宽度大于高度，所以现实为高度无法填满
+    **当个同时给出高度和宽度100%时，图片会被拉伸（图片原始宽高比不是一比一时）
+    **只有给出高度100%时，显示比较正常
+    */
+    // width: 100%; 
+    height: 100%;
+    -webkit-transform: translateX(-4rem) scale(1.4);
+    transform: translateX(-4rem) scale(1.4);
+    transition: all .5s;
+  }
+
+  &:hover &-figcaption{
+    opacity: 1;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  } 
+  &:hover &-image {
+    /**原始放大，hover缩小，图片不会移位*/
+    transform: translateX(-4rem) scale(1.1);
+    /**图片的模糊和变暗效果*/
+    filter: blur(3px) brightness(80%);
+  }
+
+
+
+}
