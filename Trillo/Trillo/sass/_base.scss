@@ -15,6 +15,7 @@ Grey dark 2: #777
 Grey dark 3: #999
 
 */
+// css custom variable 无法在media query中使用
 :root {
   //必须以双横线开始
   --color-primary: #eb2f64;
@@ -38,6 +39,13 @@ Grey dark 3: #999
   //变量可以使用变量
 }
 
+//sass variable
+$bg-largest: 75em;//1200px
+$bg-large: 50em;  //800px
+$bg-small: 38.125em;//610px
+
+
+
 * {
   margin: 0;
   padding: 0;
@@ -53,6 +61,9 @@ Grey dark 3: #999
 html {
   box-sizing: border-box;
   font-size: 62.5%;
+  @media only screen and (max-width: $bg-largest) {
+    font-size: 30%;
+  }
 }
 
 body {
