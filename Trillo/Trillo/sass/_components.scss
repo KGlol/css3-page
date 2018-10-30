@@ -256,20 +256,7 @@
         animation: pulsate 1s infinite;
       }
 
-      @keyframes pulsate {
-        0% {
-          transform: scale(1.05) translateY(-1px);
-          box-shadow: 0 .7rem 1rem rgba($color: #000000, $alpha: .3);
-        }
-        50% {
-          transform: scale(1) translateY(0);
-          box-shadow: 0 .4rem 1rem rgba($color: #000000, $alpha: .6);
-        }
-        100% {
-          transform: scale(1.05) translateY(-1px);
-          box-shadow: 0 .7rem 1rem rgba($color: #000000, $alpha: .3);
-        }
-      }
+   
 
     }
     
@@ -293,5 +280,157 @@
     &-rating-average {
       font-size: 2rem;
     }
+  }
+}
+
+//details content
+.paragraph {
+
+  padding-bottom: 3rem;
+  &:not(:first-child) { //last-of-type会选择最后一个相同类型的元素
+    border-bottom: var(--line);
+  }
+}
+
+.list {
+  list-style: none;
+  padding: 3rem 0;
+  margin-bottom: 3rem;
+  border-bottom: var(--line);
+  display: flex;
+  flex-wrap: wrap;
+
+  &-item {
+    // width: 50%;
+    flex: 0 0 50%;
+  }
+  &-item::before {
+    content: "";
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    margin-right: .5rem;
+    // old way
+    // background-image: url(../img/chevron-thin-right.svg);
+    // background-size: cover;
+    //masks
+    background-color: var(--color-primary-light);
+    -webkit-mask-image: url(../img/chevron-thin-right.svg);
+    mask-image: url(../img/chevron-thin-right.svg);
+    -webkit-mask-size: cover;
+    mask-size: cover;
+
+  }
+  &-icon {
+    width: 1rem;
+    height: 1rem;
+    fill: var(--color-primary-light);
+  }
+}
+
+.recommend {
+  display: flex;
+  justify-content: space-between;
+  margin-right: auto;
+  align-items: center;
+  &-count {
+    font-size: 1.2rem;
+    color: var(--color-grey-dark-2);
+  }
+
+  &-photo {
+    width: 4rem;
+    border-radius: 50%;
+    border: .3rem solid white;
+    box-sizing: content-box;//加边框后,image不会shrink；
+    &:not(:last-child){
+      margin-right: -2rem;
+    }
+
+  }
+}
+
+//cta
+.cta{
+  // display: flex;
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.heading-secondary {
+  font-weight: 300;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.btn {
+  font-size: 1.5rem;
+  font-weight: 300;
+  width: 15rem;
+  height: 3rem;
+  border: none;
+  outline: none;
+  margin-top: 3rem;
+  text-align: center;
+  position: relative;
+  // display: block;
+  color: var(--color-grey-light-1);
+  border-radius: 100rem;
+  background-image: linear-gradient(to right,
+  var(--color-primary-light),
+  var(--color-primary-dark));
+  overflow: hidden;
+  transition: width .2s;
+  & > * {
+    display: block;
+    text-transform: uppercase;
+    // transition: all .3s;
+    backface-visibility: hidden;//完美解决button外的显示
+    transition: transform .2s,
+                visibility .2s .1s;
+  }
+  &-visible {
+    transform: translateY(-.8rem);
+    }
+  &-invisible {
+    transform: translateY(-2rem);
+    visibility: hidden;
+  }
+
+  &:hover {
+    width: 20rem;
+    transform: translateY(-1px);
+    box-shadow: 0 1rem 1rem rgba($color: #000000, $alpha: .3);
+    background-image: linear-gradient(to left,
+                      var(--color-primary-light),
+                      var(--color-primary-dark));
+  }
+  &:hover &-visible {
+    transform: translateY(3rem);
+    visibility: hidden;
+  }
+  &:hover &-invisible {
+    transform: translateY(.8rem);
+    visibility: visible;
+  }
+
+  &:focus {
+    animation: pulsate 1s infinite;
+  }
+}
+//infinite animation
+@keyframes pulsate {
+  0% {
+    transform: scale(1.05) translateY(-1px);
+    box-shadow: 0 .7rem 1rem rgba($color: #000000, $alpha: .3);
+  }
+  50% {
+    transform: scale(1) translateY(0);
+    box-shadow: 0 .4rem 1rem rgba($color: #000000, $alpha: .6);
+  }
+  100% {
+    transform: scale(1.05) translateY(-1px);
+    box-shadow: 0 .7rem 1rem rgba($color: #000000, $alpha: .3);
   }
 }

@@ -16,6 +16,7 @@ Grey dark 3: #999
 
 */
 :root {
+  //必须以双横线开始
   --color-primary: #eb2f64;
   --color-primary-light: #FF3366;
   --color-primary-dark: #BA265D;
@@ -30,6 +31,11 @@ Grey dark 3: #999
   --color-grey-dark-3: #999;
 
   --shadow-dark: 0 2rem 6rem rgba(black, .3);
+
+  --shadow-light: 0 2rem 5rem rgba(black, .06);
+
+  --line: 1px solid var(--color-grey-light-2);
+  //变量可以使用变量
 }
 
 * {
